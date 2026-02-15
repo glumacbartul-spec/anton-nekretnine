@@ -1,117 +1,125 @@
-<!DOCTYPE html>
-<html lang="hr">
+<!DOCTYPE html><html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anton Nekretnine</title>
-<style>
+<title>Anton Nekretnine</title><style>
 body {
+    font-family: Arial;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    background: #eef2f7;
 }
 
 header {
-    background: #0a3d62;
+    background: #0f172a;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
-}
-
-.section {
-    padding: 40px 20px;
-    max-width: 1000px;
-    margin: auto;
+.container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .card {
     background: white;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.card h3 {
-    margin-top: 0;
-}
-
-.price {
-    color: #27ae60;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-footer {
-    background: #0a3d62;
-    color: white;
-    text-align: center;
     padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 button {
-    background: #0a3d62;
+    background: #0f172a;
     color: white;
     padding: 10px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #1e5799;
+    background: #1e293b;
 }
-</style>
-</head>
-<body>
 
-<header>
-<h1>Anton - Agencija za nekretnine</h1>
-<p>Makarska | Profesionalna prodaja nekretnina</p>
-</header>
+/* POPUP */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
 
-<div class="section">
-<h2>O meni</h2>
-<div class="card">
-<p>Zovem se Anton i bavim se prodajom nekretnina. Pomažem klijentima u kupnji i prodaji kuća i stanova širom Hrvatske.</p>
-<p><strong>Lokacija ureda:</strong> Ulica Ante Starčevića 32, Makarska</p>
-<p><strong>Telefon:</strong> 098 186 7392</p>
-</div>
-</div>
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 12px;
+}
 
-<div class="section">
-<h2>Aktualne nekretnine</h2>
+.close {
+    float: right;
+    font-size: 22px;
+    cursor: pointer;
+}
 
-<div class="card">
-<h3>Moderna vila - Split</h3>
-<p>Luksuzna vila s bazenom i pogledom na more.</p>
-<p class="price">Cijena: 620.000 €</p>
-<button>Kontaktiraj</button>
-</div>
+.slider img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 
-<div class="card">
-<h3>Kuća uz more - Zadar</h3>
-<p>Predivna kuća prvi red do mora.</p>
-<p class="price">Cijena: 480.000 €</p>
-<button>Kontaktiraj</button>
-</div>
+iframe {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+</style><script>
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
+}
 
-<div class="card">
-<h3>Obiteljska kuća - Zagreb</h3>
-<p>Prostrana kuća u mirnom dijelu grada.</p>
-<p class="price">Cijena: 310.000 €</p>
-<button>Kontaktiraj</button>
-</div>
-
-</div>
-
-<footer>
-© 2024 Anton Nekretnine
-</footer>
-
-</body>
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+</script></head><body><header>
+<h1>Anton Nekretnine</h1>
+<p>Prodaja kuća i stanova po Hrvatskoj</p>
+</header><div class="container"><div class="card">
+<h2>Kuća - Split</h2>
+<p>Cijena: 320 000 €</p>
+<button onclick="openModal('m1')">Pogledaj</button>
+</div><div class="card">
+<h2>Vila - Zadar</h2>
+<p>Cijena: 590 000 €</p>
+<button onclick="openModal('m2')">Pogledaj</button>
+</div></div><!-- POPUP 1 --><div id="m1" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m1')">✖</span><h2>Kuća u Splitu</h2><div class="slider">
+<img src="https://picsum.photos/600/400?house1">
+<img src="https://picsum.photos/600/400?house2">
+<img src="https://picsum.photos/600/400?house3">
+</div><p><b>Kvadratura:</b> 145 m²</p>
+<p><b>Lokacija:</b> Žnjan, Split</p>
+<p><b>Sobe:</b> 4</p>
+<p><b>Balkon:</b> Da</p>
+<p><b>Parking:</b> 2 mjesta</p><iframe src="https://www.google.com/maps?q=Split&output=embed"></iframe></div>
+</div><!-- POPUP 2 --><div id="m2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m2')">✖</span><h2>Vila u Zadru</h2><div class="slider">
+<img src="https://picsum.photos/600/400?villa1">
+<img src="https://picsum.photos/600/400?villa2">
+<img src="https://picsum.photos/600/400?villa3">
+</div><p><b>Kvadratura:</b> 210 m²</p>
+<p><b>Lokacija:</b> Diklo, Zadar</p>
+<p><b>Bazen:</b> Da</p>
+<p><b>Pogled na more:</b> Da</p>
+<p><b>Energetski razred:</b> A+</p><iframe src="https://www.google.com/maps?q=Zadar&output=embed"></iframe></div>
+</div></body>
 </html>
